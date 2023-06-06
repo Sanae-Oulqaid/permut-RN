@@ -70,12 +70,23 @@ const Accueil = () => {
   const htmlContent = `
     <!DOCTYPE html>
     <html>
-      <head>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      </head>
+    <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
       <body>
+        <h1>Professors by Specialty</h1>
         <canvas id="chart1"></canvas>
+        <h1>Professors by City</h1>
         <canvas id="chart2"></canvas>
+        <h1>Professors by Grade</h1>
         <canvas id="chart3"></canvas>
         <script>
           const ctx1 = document.getElementById('chart1').getContext('2d');
