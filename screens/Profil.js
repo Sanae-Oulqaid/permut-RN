@@ -542,7 +542,7 @@ export default function Profil({ navigation, user }) {
           {/* Supprimer mon compte Button */}
           <TouchableOpacity
             style={styles.registerbtn}
-            onPress={deleteFunction}
+            onPress={registerFunction}
           >
             <Text style={styles.registerBtnText}>Delete my account</Text>
             {loading && loading ? (

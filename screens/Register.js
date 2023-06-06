@@ -84,9 +84,9 @@ export default function Register({ navigation }) {
     if (getPassword === "") {
       setPasswordError("*This field is required*");
     }
-    if (getGrade === "") {
-      setGradeError("*This field is required*");
-    }
+    // if (getGrade === "") {
+    //   setGradeError("*This field is required*");
+    // }
 
     if (
       getEmail !== "" &&
