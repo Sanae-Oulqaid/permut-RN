@@ -27,10 +27,10 @@ export default function Login({ navigation, setUser }) {
     setDisabled(true);
     setLoading(true);
     if (getEmail === "") {
-      setEmailError("*This is Required");
+      setEmailError("*This field is required*");
     }
     if (getPassword === "") {
-      setPasswordError("*This is Required");
+      setPasswordError("*This field is required*");
     }
     if (getEmail !== "" && getPassword !== "") {
       axios
@@ -50,7 +50,7 @@ export default function Login({ navigation, setUser }) {
           setDisabled(false);
           setLoading(false);
           setError(true);
-          setThrowError("Sorry! User not found / Incoreect Password");
+          setThrowError("User not found or Incorrect password");
           setPassword("");
         });
     } else {
@@ -63,17 +63,17 @@ export default function Login({ navigation, setUser }) {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <Image
+      {/* <Image
         style={styles.myLogo}
         source={{
           uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/top_log.png",
         }}
-      />
-      <Text style={styles.header}>react-native-login-register-ui</Text>
+      /> */}
+      {/* <Text style={styles.header}>react-native-login-register-ui</Text> */}
       <Image
         style={styles.loginImage}
         source={{
-          uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/login.png",
+          uri: "https://previews.123rf.com/images/rudzhan/rudzhan2208/rudzhan220800685/193062660-la-femme-a-oubli%C3%A9-le-mot-de-passe.jpg",
         }}
       />
       {getError ? (
@@ -84,17 +84,17 @@ export default function Login({ navigation, setUser }) {
               setError(false);
             }}
           >
-            <Text style={{ color: "white", fontWeight: "bold" }}>X</Text>
+            <Text style={{ color: "white", fontWeight: "bold" }}>x</Text>
           </TouchableOpacity>
           <Text style={styles.errorCardText}>{throwError}</Text>
         </View>
       ) : null}
       <CustomBox
-        placeholder={"Email"}
-        boxColor={"dodgerblue"}
-        focusColor={"#e65c40"}
+        placeholder={"Enter your Email"}
+        boxColor={"#059743"}
+        focusColor={"#C70039"}
         keyboardType="email-address"
-        boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+        boxStyle={{ borderRadius: 10, borderWidth: 1 }}
         inputStyle={{
           fontWeight: "bold",
           color: "#30302e",
@@ -104,7 +104,7 @@ export default function Login({ navigation, setUser }) {
         labelConfig={{
           text: "Email",
           style: {
-            color: "#0e0e21",
+            color: "#059743",
             fontWeight: "bold",
           },
         }}
@@ -119,11 +119,11 @@ export default function Login({ navigation, setUser }) {
         }}
       />
       <CustomBox
-        placeholder={"Password"}
+        placeholder={"Enter your Password"}
         toggle={true}
-        boxColor={"dodgerblue"}
-        focusColor={"#e65c40"}
-        boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+        boxColor={"#059743"}
+        focusColor={"#C70039"}
+        boxStyle={{ borderRadius: 10, borderWidth: 1 }}
         inputStyle={{
           fontWeight: "bold",
           color: "#30302e",
@@ -133,7 +133,7 @@ export default function Login({ navigation, setUser }) {
         labelConfig={{
           text: "Password",
           style: {
-            color: "#0e0e21",
+            color: "#059743",
             fontWeight: "bold",
           },
         }}
@@ -154,7 +154,7 @@ export default function Login({ navigation, setUser }) {
         onPress={loginFunction}
         disabled={getDisabled}
       >
-        <Text style={styles.loginBtnText}>LogIn</Text>
+        <Text style={styles.loginBtnText}>Sign in</Text>
         {loading && loading ? (
           <ActivityIndicator style={styles.indicator} color={"white"} />
         ) : null}
@@ -163,7 +163,7 @@ export default function Login({ navigation, setUser }) {
       {/* Register Button */}
       <View style={styles.createAccount}>
         <Text style={styles.createAccountText}>
-          {`Don't have an Account? `}
+          {`Do not have an account? `}
         </Text>
         <TouchableOpacity
           style={styles.registerBtn}
@@ -171,7 +171,7 @@ export default function Login({ navigation, setUser }) {
             navigation.navigate("Register");
           }}
         >
-          <Text style={styles.registerBtnText}>Register for Free!</Text>
+          <Text style={styles.registerBtnText}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -186,12 +186,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   errorCard: {
-    width: 300,
+    width: 285,
     height: 50,
-    backgroundColor: "#de3138",
+    backgroundColor: "#C70039",
     justifyContent: "center",
     paddingLeft: 15,
-    borderRadius: 40,
+    borderRadius: 10,
   },
   errorCardText: {
     paddingLeft: 15,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: -20,
+    marginTop: -40,
     left: 250,
     position: "relative",
   },
@@ -219,10 +219,10 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     marginTop: 10,
-    backgroundColor: "dodgerblue",
-    width: 300,
+    backgroundColor: "#059743",
+    width: 150,
     height: 50,
-    borderRadius: 40,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",

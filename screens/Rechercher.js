@@ -69,6 +69,30 @@ export default function Rechercher() {
     }));
   }, [professeurs]);
 
+  const renderListItem = (item) => {
+    return (
+      <View style={styles.listItem}>
+        <Text>
+          <Text style={styles.bulletPoint}>• </Text>
+          {item.nom} {item.prenom}
+          {" ("}
+          {item.email}
+          {" | "}
+          {item.tel}
+          {" | "}
+          {item.grade}
+          {" - "}
+          {item.specialite}
+          {" - ("}
+          {item.faculteActuelle}
+          {" | "}
+          {item.villeFaculteActuelle}
+          {")---->"}
+          {item.villeDesiree}
+        </Text>
+      </View>
+    );
+  };
   const _renderItem = (item) => {
     return (
       <View style={styles.item}>
@@ -95,20 +119,41 @@ export default function Rechercher() {
     setSelectedVilleDesiree(initialVilleDesiree);
   };
 
-  const filteredProfesseurs = useMemo(() => {
-    // Vérifier si des filtres sont sélectionnés
-    if (
-      !selectedSpecialite &&
-      !selectedVilleActuelle &&
-      !selectedVilleDesiree
-    ) {
-      // Aucun filtre sélectionné, retourner tous les professeurs
-      return professeurs;
-    }
+  // const filteredProfesseurs = useMemo(() => {
+  //   // Vérifier si des filtres sont sélectionnés
+  //   if (
+  //     !selectedSpecialite &&
+  //     !selectedVilleActuelle &&
+  //     !selectedVilleDesiree
+  //   ) {
+  //     // Aucun filtre sélectionné, retourner tous les professeurs
+  //     return professeurs;
+  //   }
 
+  //   // Filtrer les professeurs en fonction des filtres sélectionnés
+  //   return professeurs.filter((professeur) => {
+  //     // Vérifier chaque filtre et retourner true si le professeur correspond au filtre
+  //     const matchSpecialite =
+  //       !selectedSpecialite || professeur.specialite === selectedSpecialite;
+  //     const matchVilleActuelle =
+  //       !selectedVilleActuelle ||
+  //       professeur.villeFaculteActuelle === selectedVilleActuelle;
+  //     const matchVilleDesiree =
+  //       !selectedVilleDesiree ||
+  //       professeur.villeDesiree.split(";").includes(selectedVilleDesiree);
+
+  //     return matchSpecialite && matchVilleActuelle && matchVilleDesiree;
+  //   });
+  // }, [
+  //   professeurs,
+  //   selectedSpecialite,
+  //   selectedVilleActuelle,
+  //   selectedVilleDesiree,
+  // ]);
+
+  const filteredProfesseurs = useMemo(() => {
     // Filtrer les professeurs en fonction des filtres sélectionnés
     return professeurs.filter((professeur) => {
-      // Vérifier chaque filtre et retourner true si le professeur correspond au filtre
       const matchSpecialite =
         !selectedSpecialite || professeur.specialite === selectedSpecialite;
       const matchVilleActuelle =
@@ -129,57 +174,60 @@ export default function Rechercher() {
 
   return (
     <View>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>search</Text>
+      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.container}>
-          <Text style={styles.text}>Spécialité</Text>
+          <Text style={styles.text}>Specialty</Text>
           <Dropdown
             style={styles.dropdown}
             containerStyle={styles.shadow}
             data={specialites}
             search
-            searchPlaceholder="Search"
+            searchPlaceholder="All specialties..."
             labelField="name"
             valueField="_id"
             label="Dropdown"
-            placeholder="Toutes les spécialités"
+            placeholder="All specialties"
             value={selectedSpecialite}
-            onChange={(item) => setSelectedSpecialite(item._id)}
+            onChange={(item) => setSelectedSpecialite(item.name)}
             renderLeftIcon={() => <Image style={styles.icon} />}
             renderItem={(item) => _renderItem(item)}
             textError="Error"
             ren
           />
-          <Text style={styles.text}>Ville Actuelle</Text>
+          <Text style={styles.text}>Current city</Text>
           <Dropdown
             style={styles.dropdown}
             containerStyle={styles.shadow}
             data={villesActuelles}
             search
-            searchPlaceholder="Search"
+            searchPlaceholder="All cities..."
             labelField="name"
             valueField="_id"
             label="Dropdown"
-            placeholder="Toutes les villes"
+            placeholder="All cities"
             value={selectedVilleActuelle}
-            onChange={(item) => setSelectedVilleActuelle(item._id)}
+            onChange={(item) => setSelectedVilleActuelle(item.name)}
             renderLeftIcon={() => <Image style={styles.icon} />}
             renderItem={(item) => _renderItem(item)}
             textError="Error"
             ren
           />
-          <Text style={styles.text}>Ville Désirée</Text>
+          <Text style={styles.text}>Desired City</Text>
           <Dropdown
             style={styles.dropdown}
             containerStyle={styles.shadow}
             data={villesDesirees}
             search
-            searchPlaceholder="Search"
+            searchPlaceholder="All cities..."
             labelField="name"
             valueField="_id"
             label="Dropdown"
-            placeholder="Toutes les villes"
+            placeholder="All cities"
             value={selectedVilleDesiree}
-            onChange={(item) => setSelectedVilleDesiree(item._id)}
+            onChange={(item) => setSelectedVilleDesiree(item.name)}
             renderLeftIcon={() => <Image style={styles.icon} />}
             renderItem={(item) => _renderItem(item)}
             textError="Error"
@@ -193,26 +241,18 @@ export default function Rechercher() {
               size={24}
               color="white"
             />
-            <Text style={styles.buttonText}>Réinitialiser</Text>
+            <Text style={styles.buttonText}>Reset</Text>
           </TouchableOpacity>
 
-          <Text style={styles.text}>Formations des Professeurs</Text>
+          <Text style={styles.text}>Search results</Text>
           {filteredProfesseurs.map((professeur) => (
-            <View key={professeur._id}>
-              <Text style={styles.professeurInfo}>
-                {professeur.nom} {professeur.prenom} ({professeur.email} |
-                {professeur.tel} | {professeur.grade}) - {professeur.specialite}
-                ({professeur.faculteActuelle} |{professeur.villeFaculteActuelle}
-                ){professeur.villeDesiree}
-              </Text>
-            </View>
+            <View key={professeur._id}>{renderListItem(professeur)}</View>
           ))}
         </View>
       </ScrollView>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -223,9 +263,9 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   dropdown: {
-    backgroundColor: "white",
-    borderBottomColor: "gray",
-    borderRadius: 20,
+    backgroundColor: "#C2F5A4",
+    borderBottomColor: "#059743",
+    borderRadius: 10,
     marginTop: 10,
     borderWidth: 1,
   },
@@ -260,10 +300,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "center",
     marginTop: 20,
-    width: 150,
+    width: 100,
     height: 40,
-    backgroundColor: "#2E86C1",
-    borderRadius: 20,
+    backgroundColor: "#C70039",
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
   },

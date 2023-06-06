@@ -77,19 +77,19 @@ export default function Profil({ navigation, user }) {
   const registerFunction = () => {
     setLoading(true);
     if (getFirstName === "") {
-      setFirstError("*This is Required");
+      setFirstError("*This field is required*");
     }
     if (getLastName === "") {
-      setLastError("*This is Required");
+      setLastError("*This field is required*");
     }
     if (getEmailId === "") {
-      setEmailError("*This is Required");
+      setEmailError("*This field is required*");
     }
     if (getPassword === "") {
-      setPasswordError("*This is Required");
+      setPasswordError("*This field is required*");
     }
     if (getGrade === "") {
-      setGradeError("*This is Required");
+      setGradeError("*This field is required*");
     }
 
     if (
@@ -104,7 +104,7 @@ export default function Profil({ navigation, user }) {
     } else {
       setError(true);
       setLoading(false);
-      setThrowError("Please fill the Form carefully");
+      setThrowError("Please fill out the Form carefully");
     }
   };
 
@@ -178,17 +178,17 @@ export default function Profil({ navigation, user }) {
       <StatusBar barStyle="light-content" />
       <ScrollView style={{ paddingTop: 20 }}>
         <View style={styles.container}>
-          <Image
+          {/* <Image
             style={styles.myLogo}
             source={{
               uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/top_log.png",
             }}
-          />
-          <Text style={styles.header}>Create Account for Free!</Text>
+          /> */}
+          {/* <Text style={styles.header}>Create Account for Free!</Text> */}
           <Image
             style={styles.registerImage}
             source={{
-              uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/register.png",
+              uri: "https://www.bienenseigner.com/wp-content/uploads/2020/11/L-enseignement-a-distance-a-t-il-ete-efficace-durant-la-pandemie-du-Coronavirus-390x220.jpeg",
             }}
           />
           {getError ? (
@@ -208,9 +208,9 @@ export default function Profil({ navigation, user }) {
           {/* First Name */}
           <CustomBox
             placeholder={"First Name"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -220,7 +220,7 @@ export default function Profil({ navigation, user }) {
             labelConfig={{
               text: "First Name",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -237,124 +237,12 @@ export default function Profil({ navigation, user }) {
               setFirstError("");
             }}
           />
-
-          {/* {grade} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={gradesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Grade"
-            searchPlaceholder="Search..."
-            value={getGrade}
-            onChange={(item) => {
-              setGrade(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-          {/* {Spécialité} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={specialitesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Spécialité"
-            searchPlaceholder="Search..."
-            value={getSpecialite}
-            onChange={(item) => {
-              setSpecialite(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-
-          {/* {Ville Desirees} */}
-          <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            search
-            data={villesData}
-            labelField="label"
-            valueField="value"
-            placeholder="Ville Desirees"
-            searchPlaceholder="Search..."
-            value={getVillesDesirees}
-            onChange={(items) => {
-              setVillesDesirees(items);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-            selectedStyle={styles.selectedStyle}
-          />
-
-          {/* {ville actuelle} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={villesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Ville actuelle"
-            searchPlaceholder="Search..."
-            value={getVilleActuelle}
-            onChange={(item) => {
-              setVilleActuelle(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-
           {/* Last Name */}
           <CustomBox
             placeholder={"Last Name"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -364,7 +252,7 @@ export default function Profil({ navigation, user }) {
             labelConfig={{
               text: "Last Name",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -381,12 +269,12 @@ export default function Profil({ navigation, user }) {
               setLastError("");
             }}
           />
-          {/* Telephone */}
-          <CustomBox
-            placeholder={"Téléphone"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+           {/* Telephone */}
+           <CustomBox
+            placeholder={"Phone"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -394,9 +282,9 @@ export default function Profil({ navigation, user }) {
               borderRadius: 40,
             }}
             labelConfig={{
-              text: "Téléphone",
+              text: "Phone",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -416,10 +304,10 @@ export default function Profil({ navigation, user }) {
           {/* Email Id */}
           <CustomBox
             placeholder={"Email"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
             type={"email"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -429,7 +317,7 @@ export default function Profil({ navigation, user }) {
             labelConfig={{
               text: "Email",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -449,9 +337,9 @@ export default function Profil({ navigation, user }) {
           {/* Password */}
           <CustomBox
             placeholder={"Password"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -462,7 +350,7 @@ export default function Profil({ navigation, user }) {
             labelConfig={{
               text: "Password",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -480,12 +368,40 @@ export default function Profil({ navigation, user }) {
               setPasswordError("");
             }}
           />
-          {/* Etablissement */}
-          <CustomBox
-            placeholder={"Etablissement"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+
+          {/* {grade} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={gradesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Grade"
+            searchPlaceholder="Grade..."
+            value={getGrade}
+            onChange={(item) => {
+              setGrade(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+          />
+           {/* Etablissement */}
+           <CustomBox
+            placeholder={"School"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -493,9 +409,9 @@ export default function Profil({ navigation, user }) {
               borderRadius: 40,
             }}
             labelConfig={{
-              text: "Etablissement(FST,FS,EST,ENSA...)",
+              text: "School(FST,FS,EST,ENSA...)",
               style: {
-                color: "#0e0e21",
+                color: "#BA79E2",
                 fontWeight: "bold",
               },
             }}
@@ -512,13 +428,103 @@ export default function Profil({ navigation, user }) {
               setEtablissementError("");
             }}
           />
+          {/* {Spécialité} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={specialitesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Specialty"
+            searchPlaceholder="Specialty..."
+            value={getSpecialite}
+            onChange={(item) => {
+              setSpecialite(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+          />
+
+          
+
+          {/* {ville actuelle} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={villesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Current City"
+            searchPlaceholder="Current City..."
+            value={getVilleActuelle}
+            onChange={(item) => {
+              setVilleActuelle(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+          />
+          {/* {Ville Desirees} */}
+          <MultiSelect
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            search
+            data={villesData}
+            labelField="label"
+            valueField="value"
+            placeholder="Desired City"
+            searchPlaceholder="Desired City..."
+            value={getVillesDesirees}
+            onChange={(items) => {
+              setVillesDesirees(items);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+            selectedStyle={styles.selectedStyle}
+          />
+
+          
+         
+          
+          
+         
 
           {/* Modifier Button */}
           <TouchableOpacity
             style={styles.registerbtn}
             onPress={registerFunction}
           >
-            <Text style={styles.registerBtnText}>Modifier</Text>
+            <Text style={styles.registerBtnText}>Modify</Text>
             {loading && loading ? (
               <ActivityIndicator style={styles.indicator} color={"white"} />
             ) : null}
@@ -528,7 +534,7 @@ export default function Profil({ navigation, user }) {
             style={styles.registerbtn}
             onPress={registerFunction}
           >
-            <Text style={styles.registerBtnText}>Supprimer mon compte</Text>
+            <Text style={styles.registerBtnText}>Delete my account</Text>
             {loading && loading ? (
               <ActivityIndicator style={styles.indicator} color={"white"} />
             ) : null}
@@ -566,7 +572,7 @@ const styles = StyleSheet.create({
   container: { padding: 16 },
   dropdown: {
     height: 50,
-    backgroundColor: "transparent",
+    backgroundColor: "#CBA9E0",
     borderBottomColor: "gray",
     borderBottomWidth: 0.5,
     width: 300,
@@ -602,10 +608,10 @@ const styles = StyleSheet.create({
   errorCard: {
     width: 300,
     height: 50,
-    backgroundColor: "#de3138",
+    backgroundColor: "#C70039",
     justifyContent: "center",
     paddingLeft: 15,
-    borderRadius: 40,
+    borderRadius: 10,
   },
   errorCardText: {
     paddingLeft: 15,
@@ -640,13 +646,13 @@ const styles = StyleSheet.create({
   },
   registerbtn: {
     marginTop: 10,
-    backgroundColor: "#e65c40",
-    width: 300,
+    backgroundColor: "#059743",
+    width: 210,
     height: 50,
-    borderRadius: 40,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50,
+    marginBottom: 25,
     flexDirection: "row",
   },
   registerBtnText: {

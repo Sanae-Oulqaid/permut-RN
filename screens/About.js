@@ -5,33 +5,31 @@ const About = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        Plateforme de Permutation pour Enseignants Universitaires
+        <Text style={styles.titleGreen}>Platform for</Text>{" "}
+        <Text style={styles.titleRed}>Teacher Exchange</Text>{" "}
+        <Text style={styles.titleGreen}>in</Text>{" "}
+        <Text style={styles.titleRed}>Universities</Text>
       </Text>
-      <Text>
-        Cette plateforme est simplement un espace permettant aux professeurs
-        universitaires de rechercher un partenaire pour une permutation. Elle se
-        limite à cette fonctionnalité. Les enseignants peuvent rechercher des
-        partenaires intéressés par un échange dans d'autres établissements
-        d'enseignement supérieur. Le système facilite la recherche et la
-        correspondance entre les enseignants ayant une volonté mutuelle
-        d'échanger.
+      <Text style={styles.text}>
+        This platform is simply a space for university professors to search for a
+        partner for an exchange. It is limited to this functionality. Teachers can
+        search for partners interested in an exchange at other higher education
+        institutions. The system facilitates the search and correspondence between
+        teachers who have a mutual desire to exchange.
       </Text>
-      <Text>
-        La plateforme offre une interface conviviale et sécurisée aux
-        enseignants pour communiquer et échanger les informations nécessaires.
-        Les membres peuvent créer des profils personnels et renseigner des
-        informations concernant leurs spécialités, les établissements et les
-        informations de contact. Les enseignants peuvent consulter les profils
-        des partenaires potentiels et entrer en contact avec eux pour discuter
-        des détails de l'accord d'échange.
+      <Text style={styles.text}>
+        The platform offers a user-friendly and secure interface for teachers to
+        communicate and exchange necessary information. Members can create personal
+        profiles and provide information about their specialties, institutions, and
+        contact details. Teachers can view profiles of potential partners and get
+        in touch with them to discuss the details of the exchange agreement.
       </Text>
-      <Text>
-        En utilisant cette plateforme, les enseignants peuvent faciliter leur
-        recherche de partenaires d'échange, économiser du temps et des efforts
-        en évitant les communications individuelles et les recherches continues
-        d'opportunités d'échange. Ce système est efficace et utile pour les
-        enseignants souhaitant changer d'institution ou travailler dans un
-        nouvel établissement pour élargir leur expérience académique.
+      <Text style={styles.text}>
+        By using this platform, teachers can facilitate their search for exchange
+        partners, save time and effort by avoiding individual communications and
+        continuous searches for exchange opportunities. This system is efficient
+        and useful for teachers who wish to change institutions or work in a new
+        institution to broaden their academic experience.
       </Text>
     </View>
   );
@@ -42,15 +40,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
+    backgroundColor: "#ECFDF5", // Vert clair
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    marginBottom: 20,
+  },
+  titleGreen: {
+    color: "#064E3B", // Vert clair
+  },
+  titleRed: {
+    color: "#7B341E", // Rouge foncé
   },
   text: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    marginBottom: 10,
+    textAlign: "center",
   },
 });
 

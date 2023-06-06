@@ -42,7 +42,7 @@ export default function Register({ navigation }) {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.16:3000/professeurs")
+      .get("https://sleepy-jay-windbreaker.cyclic.app/professeurs")
       .then((response) => {
         villes = Array.from(
           new Set(response.data.map((prof) => prof.villeFaculteActuelle))
@@ -73,19 +73,19 @@ export default function Register({ navigation }) {
   const registerFunction = () => {
     setLoading(true);
     if (getFirstName === "") {
-      setFirstError("*This is Required");
+      setFirstError("*This field is required*");
     }
     if (getLastName === "") {
-      setLastError("*This is Required");
+      setLastError("*This field is required*");
     }
     if (getEmail === "") {
-      setEmailError("*This is Required");
+      setEmailError("*This field is required*");
     }
     if (getPassword === "") {
-      setPasswordError("*This is Required");
+      setPasswordError("*This field is required*");
     }
     if (getGrade === "") {
-      setGradeError("*This is Required");
+      setGradeError("*This field is required*");
     }
 
     if (
@@ -100,7 +100,7 @@ export default function Register({ navigation }) {
     } else {
       setError(true);
       setLoading(false);
-      setThrowError("Please fill the Form carefully");
+      setThrowError("Please fill out the Form carefully");
     }
   };
 
@@ -201,17 +201,17 @@ export default function Register({ navigation }) {
       <StatusBar barStyle="light-content" />
       <ScrollView style={{ paddingTop: 20 }}>
         <View style={styles.container}>
-          <Image
+          {/* <Image
             style={styles.myLogo}
             source={{
               uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/top_log.png",
             }}
-          />
-          <Text style={styles.header}>Create Account for Free!</Text>
+          /> */}
+          {/* <Text style={styles.header}>Create Account for Free!</Text> */}
           <Image
             style={styles.registerImage}
             source={{
-              uri: "https://raw.githubusercontent.com/hirishu10/my-assets/main/register.png",
+              uri: "https://img.lovepik.com/element/45010/0441.png_300.png",
             }}
           />
           {getError ? (
@@ -231,19 +231,19 @@ export default function Register({ navigation }) {
           {/* First Name */}
           <CustomBox
             placeholder={"First Name"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
               paddingLeft: 20,
-              borderRadius: 40,
+              borderRadius: 100,
             }}
             labelConfig={{
               text: "First Name",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -260,124 +260,12 @@ export default function Register({ navigation }) {
               setFirstError("");
             }}
           />
-
-          {/* {grade} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={gradesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Grade"
-            searchPlaceholder="Search..."
-            value={getGrade}
-            onChange={(item) => {
-              setGrade(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-          {/* {Spécialité} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={specialitesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Spécialité"
-            searchPlaceholder="Search..."
-            value={getSpecialite}
-            onChange={(item) => {
-              setSpecialite(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-
-          {/* {Ville Desirees} */}
-          <MultiSelect
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            search
-            data={villesData}
-            labelField="label"
-            valueField="value"
-            placeholder="Ville Desirees"
-            searchPlaceholder="Search..."
-            value={getVillesDesirees}
-            onChange={(items) => {
-              setVillesDesirees(items);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-            selectedStyle={styles.selectedStyle}
-          />
-
-          {/* {ville actuelle} */}
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={villesData}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Ville actuelle"
-            searchPlaceholder="Search..."
-            value={getVilleActuelle}
-            onChange={(item) => {
-              setVilleActuelle(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="black"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-
           {/* Last Name */}
           <CustomBox
             placeholder={"Last Name"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -387,7 +275,7 @@ export default function Register({ navigation }) {
             labelConfig={{
               text: "Last Name",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -406,10 +294,10 @@ export default function Register({ navigation }) {
           />
           {/* Telephone */}
           <CustomBox
-            placeholder={"Telephone"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            placeholder={"Phone"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -417,9 +305,9 @@ export default function Register({ navigation }) {
               borderRadius: 40,
             }}
             labelConfig={{
-              text: "Telephone",
+              text: "Phone",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -439,10 +327,10 @@ export default function Register({ navigation }) {
           {/* Email Id */}
           <CustomBox
             placeholder={"Email"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
             type={"email"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -452,7 +340,7 @@ export default function Register({ navigation }) {
             labelConfig={{
               text: "Email",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -472,9 +360,9 @@ export default function Register({ navigation }) {
           {/* Password */}
           <CustomBox
             placeholder={"Password"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -485,7 +373,7 @@ export default function Register({ navigation }) {
             labelConfig={{
               text: "Password",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -503,12 +391,40 @@ export default function Register({ navigation }) {
               setPasswordError("");
             }}
           />
+
+          {/* {grade} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={gradesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Grade"
+            searchPlaceholder="Grade..."
+            value={getGrade}
+            onChange={(item) => {
+              setGrade(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="star"
+                size={20}
+              />
+            )}
+          />
           {/* Etablissement */}
           <CustomBox
-            placeholder={"Etablissement"}
-            boxColor={"silver"}
-            focusColor={"#e07964"}
-            boxStyle={{ borderRadius: 40, borderWidth: 2 }}
+            placeholder={"School"}
+            boxColor={"#059743"}
+            focusColor={"#C70039"}
+            boxStyle={{ borderRadius: 10, borderWidth: 1 }}
             inputStyle={{
               fontWeight: "bold",
               color: "#30302e",
@@ -516,9 +432,9 @@ export default function Register({ navigation }) {
               borderRadius: 40,
             }}
             labelConfig={{
-              text: "Etablissement(FST,FS,EST,ENSA...)",
+              text: "School(FST,FS,EST,ENSA...)",
               style: {
-                color: "#0e0e21",
+                color: "#059743",
                 fontWeight: "bold",
               },
             }}
@@ -533,8 +449,100 @@ export default function Register({ navigation }) {
               setEtablissement(value);
               setError(false);
               setEtablissementError("");
+              
             }}
+            
           />
+          {/* {Spécialité} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={specialitesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Specialty"
+            searchPlaceholder="Specialty..."
+            value={getSpecialite}
+            onChange={(item) => {
+              setSpecialite(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="book"
+                size={20}
+              />
+            )}
+          />
+
+          
+
+          {/* {ville actuelle} */}
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={villesData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Current City"
+            searchPlaceholder="Current City..."
+            value={getVilleActuelle}
+            onChange={(item) => {
+              setVilleActuelle(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+          />
+          {/* {Ville Desirees} */}
+          <MultiSelect
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            search
+            data={villesData}
+            labelField="label"
+            valueField="value"
+            placeholder="Desired Cities"
+            searchPlaceholder="Desired Cities..."
+            value={getVillesDesirees}
+            onChange={(items) => {
+              setVillesDesirees(items);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="#059743"
+                name="Safety"
+                size={20}
+              />
+            )}
+            selectedStyle={styles.selectedStyle}
+          />
+
+          
+          
+          
+          
+          
           {/* Login Button */}
           <TouchableOpacity
             style={styles.registerbtn}
@@ -555,7 +563,7 @@ const styles = StyleSheet.create({
   dropdown: {
     margin: 16,
     height: 50,
-    borderBottomColor: "gray",
+    borderBottomColor: "#059743",
     borderBottomWidth: 0.5,
   },
   icon: {
@@ -579,7 +587,7 @@ const styles = StyleSheet.create({
   dropdown: {
     height: 50,
     backgroundColor: "transparent",
-    borderBottomColor: "gray",
+    borderBottomColor: "#059743",
     borderBottomWidth: 0.5,
     width: 300,
     marginBottom: 35,
@@ -612,9 +620,9 @@ const styles = StyleSheet.create({
   },
 
   errorCard: {
-    width: 300,
+    width: 286,
     height: 50,
-    backgroundColor: "#de3138",
+    backgroundColor: "#C70039",
     justifyContent: "center",
     paddingLeft: 15,
     borderRadius: 40,
@@ -631,7 +639,7 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: -20,
+    marginTop: -40,
     left: 250,
     position: "relative",
   },
@@ -652,10 +660,10 @@ const styles = StyleSheet.create({
   },
   registerbtn: {
     marginTop: 10,
-    backgroundColor: "#e65c40",
-    width: 300,
+    backgroundColor: "#059743",
+    width: 150,
     height: 50,
-    borderRadius: 40,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 50,
