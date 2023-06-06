@@ -44,6 +44,16 @@ export default function Profil({ navigation, user }) {
   const [EtablissementError, setEtablissementError] = useState("");
   const [TelephoneError, setTelephoneError] = useState("");
 
+  const deleteFunction = () => {
+    axios
+      .delete(`https://sleepy-jay-windbreaker.cyclic.app/professeurs/${user.email}`)
+      .then((response) => {
+        console.log(response.data.message);
+        navigation.navigate("Login");
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     axios
       .get("https://sleepy-jay-windbreaker.cyclic.app/professeurs")
@@ -532,7 +542,7 @@ export default function Profil({ navigation, user }) {
           {/* Supprimer mon compte Button */}
           <TouchableOpacity
             style={styles.registerbtn}
-            onPress={registerFunction}
+            onPress={deleteFunction}
           >
             <Text style={styles.registerBtnText}>Delete my account</Text>
             {loading && loading ? (
