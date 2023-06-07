@@ -42,7 +42,7 @@ export default function Register({ navigation }) {
 
   useEffect(() => {
     axios
-      .get("https://sleepy-jay-windbreaker.cyclic.app/professeurs")
+      .get("https://tiny-worm-nightgown.cyclic.app/professeurs")
       .then((response) => {
         villes = Array.from(
           new Set(response.data.map((prof) => prof.villeFaculteActuelle))
@@ -107,7 +107,7 @@ export default function Register({ navigation }) {
   const succesfullyCreateAccount = () => {
     setLoading(true);
     axios
-      .post("https://sleepy-jay-windbreaker.cyclic.app/professeurs", {
+      .post("https://tiny-worm-nightgown.cyclic.app/professeurs", {
         nom: getLastName,
         prenom: getFirstName,
         tel: getTelephone,
@@ -324,7 +324,7 @@ export default function Register({ navigation }) {
               setTelephoneError("");
             }}
           />
-          {/* Email */}
+          {/* Email y*/}
           <CustomBox
             placeholder={"Email"}
             boxColor={"#059743"}

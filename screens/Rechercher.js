@@ -20,7 +20,7 @@ export default function Rechercher() {
   const [professeurs, setProfesseurs] = useState([]);
 
   useEffect(() => {
-    fetch("https://sleepy-jay-windbreaker.cyclic.app/professeurs")
+    fetch("https://tiny-worm-nightgown.cyclic.app/professeurs")
       .then((response) => response.json())
       .then((data) => setProfesseurs(data))
       .catch((error) => console.error(error));

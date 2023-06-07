@@ -46,7 +46,7 @@ export default function Profil({ navigation, user }) {
 
   const deleteFunction = () => {
     axios
-      .delete(`https://sleepy-jay-windbreaker.cyclic.app/professeurs/${user.email}`)
+      .delete(`https://tiny-worm-nightgown.cyclic.app/professeurs${user.email}`)
       .then((response) => {
         console.log(response.data.message);
         navigation.navigate("Login");
@@ -56,7 +56,7 @@ export default function Profil({ navigation, user }) {
 
   useEffect(() => {
     axios
-      .get("https://sleepy-jay-windbreaker.cyclic.app/professeurs")
+      .get("https://tiny-worm-nightgown.cyclic.app/professeurs")
       .then((response) => {
         villes = Array.from(
           new Set(response.data.map((prof) => prof.villeFaculteActuelle))
@@ -529,16 +529,7 @@ export default function Profil({ navigation, user }) {
           
          
 
-          {/* Modifier Button */}
-          <TouchableOpacity
-            style={styles.registerbtn}
-            onPress={registerFunction}
-          >
-            <Text style={styles.registerBtnText}>Modify</Text>
-            {loading && loading ? (
-              <ActivityIndicator style={styles.indicator} color={"white"} />
-            ) : null}
-          </TouchableOpacity>
+          
           {/* Supprimer mon compte Button */}
           <TouchableOpacity
             style={styles.registerbtn}
