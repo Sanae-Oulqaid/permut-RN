@@ -55,7 +55,7 @@ const Accueil = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://sleepy-jay-windbreaker.cyclic.app/professeurs"
+          "https://tiny-worm-nightgown.cyclic.app/professeurs"
         );
         const data = await response.json();
         setProfessorsData(data);
@@ -88,6 +88,12 @@ const Accueil = () => {
             padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+          }
+          th {
+            font-weight: bold;
+          }
+          td {
+            font-size: 16px;
           }
         </style>
       </head>
