@@ -68,7 +68,7 @@ const Navigation = ({ navigation, user }) => {
         }}
       />
       <Tab.Screen
-        name="Log off"
+        name="Sign out"
         component={Login}
         listeners={({ navigation }) => ({
           tabPress: (e) => {
