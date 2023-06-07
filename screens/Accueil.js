@@ -70,29 +70,90 @@ const Accueil = () => {
   const htmlContent = `
     <!DOCTYPE html>
     <html>
-    <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-      h1 {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 16px;
-      }
-    </style>
-  </head>
+      <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+          h1 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+          }
+          th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+          }
+        </style>
+      </head>
       <body>
         <h1>Professors by Specialty</h1>
         <canvas id="chart1"></canvas>
+        <table>
+          <tr>
+            <th>Specialty</th>
+            <th>Number of Professors</th>
+          </tr>
+          ${Object.entries(calculateProfessorsBySpecialty())
+            .map(
+              ([specialty, count]) => `
+              <tr>
+                <td>${specialty}</td>
+                <td>${count}</td>
+              </tr>
+            `
+            )
+            .join("")}
+        </table>
+
         <h1>Professors by City</h1>
         <canvas id="chart2"></canvas>
+        <table>
+          <tr>
+            <th>City</th>
+            <th>Number of Professors</th>
+          </tr>
+          ${Object.entries(calculateProfessorsByCity())
+            .map(
+              ([city, count]) => `
+              <tr>
+                <td>${city}</td>
+                <td>${count}</td>
+              </tr>
+            `
+            )
+            .join("")}
+        </table>
+
         <h1>Professors by Grade</h1>
         <canvas id="chart3"></canvas>
+        <table>
+          <tr>
+            <th>Grade</th>
+            <th>Number of Professors</th>
+          </tr>
+          ${Object.entries(calculateProfessorsByGrade())
+            .map(
+              ([grade, count]) => `
+              <tr>
+                <td>${grade}</td>
+                <td>${count}</td>
+              </tr>
+            `
+            )
+            .join("")}
+        </table>
+
         <script>
           const ctx1 = document.getElementById('chart1').getContext('2d');
           const ctx2 = document.getElementById('chart2').getContext('2d');
           const ctx3 = document.getElementById('chart3').getContext('2d');
-          
+
           const professorsData = ${JSON.stringify(
             calculateProfessorsBySpecialty()
           )};
@@ -115,24 +176,20 @@ const Accueil = () => {
             options: {
               responsive: true,
               plugins: {
-                // tooltip: {
-                //   enabled: false, // Désactiver les infobulles
-                // },
                 legend: {
-                     labels: {
-                         // This more specific font property overrides the global property
-                         font: {
-                             size: 30
-                         }
-                     }
-                 }
+                  labels: {
+                    font: {
+                      size: 30
+                    }
+                  }
+                }
               },
               scales: {
                 x: {
-                  display: false, // Masquer l'axe des x
+                  display: false,
                 },
                 y: {
-                  display: false, // Masquer l'axe des y
+                  display: false,
                 },
               },
             },
@@ -160,24 +217,20 @@ const Accueil = () => {
             options: {
               responsive: true,
               plugins: {
-                // tooltip: {
-                //   enabled: false, // Désactiver les infobulles
-                // },
                 legend: {
-                     labels: {
-                         // This more specific font property overrides the global property
-                         font: {
-                             size: 30
-                         }
-                     }
-                 }
+                  labels: {
+                    font: {
+                      size: 30
+                    }
+                  }
+                }
               },
               scales: {
                 x: {
-                  display: false, // Masquer l'axe des x
+                  display: false,
                 },
                 y: {
-                  display: false, // Masquer l'axe des y
+                  display: false,
                 },
               },
             },
@@ -205,30 +258,20 @@ const Accueil = () => {
             options: {
               responsive: true,
               plugins: {
-                // tooltip: {
-                //   enabled: false, // Désactiver les infobulles
-                // },
                 legend: {
-                     labels: {
-                         // This more specific font property overrides the global property
-                         font: {
-                             size: 30
-                         }
-                     }
-                 }
+                  labels: {
+                    font: {
+                      size: 30
+                    }
+                  }
+                }
               },
-              layout: {
-             padding: {
-                 left: 150,
-                 right: 150
-             }
-         },
               scales: {
                 x: {
-                  display: false, // Masquer l'axe des x
+                  display: false,
                 },
                 y: {
-                  display: false, // Masquer l'axe des y
+                  display: false,
                 },
               },
             },
@@ -253,97 +296,3 @@ const Accueil = () => {
 };
 
 export default Accueil;
-
-// import axios from "axios";
-// import React, { useEffect, useState } from "react";
-// import { Text, View } from "react-native";
-// import { WebView } from "react-native-webview";
-
-// const Accueil = () => {
-//   const [professorsData, setProfessorsData] = useState([]);
-
-//   const calculateProfessorsByGrade = () => {
-//     const professorsByGrade = {};
-
-//     for (const professor of professorsData) {
-//       const grade = professor.grade;
-//       if (grade in professorsByGrade) {
-//         professorsByGrade[grade] += 1;
-//       } else {
-//         professorsByGrade[grade] = 1;
-//       }
-//     }
-
-//     return professorsByGrade;
-//   };
-
-//   useEffect(() => {
-//     axios
-//       .get("http://192.168.1.16:3000/professeurs")
-//       .then((response) => {
-//         setProfessorsData(response.data);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }, []);
-
-//   const htmlContent = `
-//     <!DOCTYPE html>
-//     <html>
-//       <head>
-//         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-//       </head>
-//       <body>
-//         <div class="chart"><canvas id="chart"></canvas></div>
-
-//         <script>
-//           const ctx = document.getElementById('chart').getContext('2d');
-
-//           const professorsData = ${JSON.stringify(
-//             calculateProfessorsByGrade()
-//           )};
-//           const labels = Object.keys(professorsData);
-//           const data = Object.values(professorsData);
-
-//           new Chart(ctx, {
-//             type: 'pie',
-//             data: {
-//               labels: labels,
-//               datasets: [
-//                 {
-//                   label: 'Professors by Grade',
-//                   data: data,
-//                   backgroundColor: 'rgba(75, 19, 192, 0.6)',
-//                 },
-//               ],
-//             },
-//             options: {
-//               responsive: true,
-//                plugins: {
-//                 legend: {
-//                     labels: {
-//                         // This more specific font property overrides the global property
-//                         font: {
-//                             size: 35
-//                         }
-//                     }
-//                 }
-//             },
-//             layout: {
-//             padding: {
-//                 left: 100,
-//                 right: 100
-//             }
-//         }
-//             },
-//           });
-//         </script>
-//       </body>
-//     </html>
-//   `;
-
-//   return <WebView originWhitelist={["*"]} source={{ html: htmlContent }} />;
-// };
-
-// export default Accueil;

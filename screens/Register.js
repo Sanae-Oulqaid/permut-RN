@@ -324,7 +324,7 @@ export default function Register({ navigation }) {
               setTelephoneError("");
             }}
           />
-          {/* Email Id */}
+          {/* Email */}
           <CustomBox
             placeholder={"Email"}
             boxColor={"#059743"}
